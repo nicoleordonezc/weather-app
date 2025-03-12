@@ -1,3 +1,5 @@
+import { searchWeather } from "./findApi.js";
+
 addEventListener("scroll", (e)=>{
     console.log(window.scrollY);
     const header = document.querySelector("header");
@@ -39,4 +41,35 @@ addEventListener("scroll", (e)=>{
          span.removeAttribute("style");
          div__footer.removeAttribute("style");
      }
+})
+
+const search =document.querySelector("#search");
+const temp_c =document.querySelector("#temp_c");
+const icon =document.querySelector("#icon");
+const status =document.querySelector("#status");
+const last_updated =document.querySelector("#last_updated");
+const feelslike_c =document.querySelector("#feelslike_c");
+
+search.addEventListener("submit", async(e)=>{
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(e.target));
+    const url = new URL(e.target.action);
+    data.enpoint = url.pathname;
+    data.method = e.target.method;
+    const response = await searchWeather(data);
+    if (response.status == 400){return undefined};
+    temp_c.textContent = `${response.current.temp_c}º`;
+    icon.src = response.current.condition.icon;
+    status.textContent = response.current.condition.text;
+    feelslike_c.textContent = `Feels like ${response.current.feelslike_c}º`;
+
+    const fecha = new Date(response.current.last_updated).toLocaleString("en-US",{
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        minute: "2-digit"}).replace(" at", ",");
+
+    last_updated.textContent = fecha;
+    
 })

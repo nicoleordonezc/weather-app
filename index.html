@@ -11,24 +11,24 @@
 <body>
    <header>
         <nav id="navbar">
-           <form class="form__search" action="" method="get">
+           <form  class="form__search" action="current.json" method="get" id="search">
                 <div class="div__icon">
-                    <input type="text">
+                    <input type="text" name="location">
                     <img src="storage/img/search_white.png">
                 </div>
            </form>
             <div class="div__body">
                 <div class="div__title">
-                    <h1>3º</h1>
-                    <span>Feels like -2º</span>
+                    <h1 id="temp_c">3º</h1>
+                    <span id="feelslike_c">Feels like</span>
                 </div>
                 <div class="div__image">
-                    <img src="storage/img/cloud_and_sun_1.png">
-                    <span>Cloudy</span>
+                    <img id="icon" src="storage/img/cloud_and_sun_1.png" >
+                    <span id="status">Cloudy</span>
                 </div>
             </div>
             <div id="div__footer" class="div__footer">
-                <span>January 18, 16:14</span>
+                <span id="last_updated">January 18, 16:14</span>
                 <p><strong>Day 3º</strong><strong>Night -1º</strong></p>
             </div>
             <form class="form__submit" action="?" method="get">
