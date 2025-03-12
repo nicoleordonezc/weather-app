@@ -13,34 +13,38 @@ addEventListener("scroll", (e)=>{
     const div__footer = document.querySelector("#div__footer");
 
     if (window.scrollY > 20) {
-         navbar.style.height = "220px";
-         header.style.height = "220px";
-         navbar.style.backgroundImage = "none"; 
-         navbar.style.backgroundColor = "var(--card-1)";
-         navbar.style.borderRadius = "0px"; 
-         navbar.style.justifyContent = "flex-start"; 
-         navbar.style.gap = "15px"; 
-         input.style.color = "var(--color-2)";
-         imgIcon.src = "storage/img/search_black.png"
-         h1.style.fontSize = "57px";
-         h1.style.color = "var(--color-2)";
-         spanTitle.style.color = "var(--color-2)";
-         img.style.width = "77.5px";
-         img.style.height = "77.5px";
-         span.style.display = "none";
-         div__footer.style.display = "none";
-     } else {
-         navbar.removeAttribute("style");
-         header.removeAttribute("style");
-         input.removeAttribute("style");
-         imgIcon.src = "storage/img/search_white.png"
-         h1.removeAttribute("style");
-         spanTitle.removeAttribute("style");
-     
-         img.removeAttribute("style");
-         span.removeAttribute("style");
-         div__footer.removeAttribute("style");
-     }
+        navbar.style.height = "220px";
+        header.style.height = "220px";
+        navbar.style.backgroundImage = "none"; 
+        navbar.style.backgroundColor = "var(--card-1)";
+        navbar.style.borderRadius = "0px"; 
+        navbar.style.justifyContent = "flex-start"; 
+        navbar.style.gap = "15px"; 
+        input.style.color = "var(--color-2)";
+        imgIcon.src = "storage/img/search_black.png"
+        div.style.flexWrap = "nowrap";
+        h1.style.fontSize = "57px";
+        h1.style.color = "var(--color-2)";
+        h1.style.letterSpacing = "0px";
+        
+        spanTitle.style.color = "var(--color-2)";
+        img.style.width = "77.5px";
+        img.style.height = "77.5px";
+        span.style.display = "none";
+        div__footer.style.display = "none";
+    } else {
+        navbar.removeAttribute("style");
+        header.removeAttribute("style");
+        input.removeAttribute("style");
+        imgIcon.src = "storage/img/search_white.png"
+        div.removeAttribute("style");
+        h1.removeAttribute("style");
+        spanTitle.removeAttribute("style");
+    
+        img.removeAttribute("style");
+        span.removeAttribute("style");
+        div__footer.removeAttribute("style");
+    }
 })
 
 const search =document.querySelector("#search");
@@ -49,6 +53,8 @@ const icon =document.querySelector("#icon");
 const status =document.querySelector("#status");
 const last_updated =document.querySelector("#last_updated");
 const feelslike_c =document.querySelector("#feelslike_c");
+const maxtemp_c =document.querySelector("#maxtemp_c");
+const mintemp_c = document.querySelector("#mintemp_c")
 
 search.addEventListener("submit", async(e)=>{
     e.preventDefault();
@@ -62,13 +68,14 @@ search.addEventListener("submit", async(e)=>{
     icon.src = response.current.condition.icon;
     status.textContent = response.current.condition.text;
     feelslike_c.textContent = `Feels like ${response.current.feelslike_c}º`;
+    maxtemp_c.textContent = `Day ${response.forecast[0].day.maxtemp_c}º`;
+    mintemp_c.textContent = `night ${response.forecast[0].day.mintemp_c}º`;
 
     const fecha = new Date(response.current.last_updated).toLocaleString("en-US",{
         month: "long",
         day: "numeric",
         hour: "2-digit",
-        minute: "2-digit",
-        minute: "2-digit"}).replace(" at", ",");
+       });
 
     last_updated.textContent = fecha;
     
