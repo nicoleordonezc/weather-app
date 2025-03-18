@@ -13,8 +13,7 @@ body {
 }
 header{
     transition:height 0.4s ease-in-out;
-    background: red;
-    /* height: 420px; */
+    height: 420px;
 }
 #navbar {
     transition:height 0.4s ease-in-out, border-radius 0.4s ease-in-out , gap 0.4s ease-in-out;
@@ -40,6 +39,7 @@ header{
 
 .form__search {
     display: flex;
+    padding-top: 20px;
 }
 .div__icon{
     flex: 1;
@@ -140,4 +140,123 @@ header{
 }
 .form__submit input.active{
     background: var(--button-1);
+}
+
+/************ cajas de pronostico *********************/
+.weather-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.weather-cards {
+    display: flex;
+    justify-content: space-evenly;
+    /* gap: 10px; */
+}
+.card {
+    width: 182px;
+    height: 65px;
+    background: var(--color-4);
+    border-radius: 16px;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+.icon {
+    font-size: 24px;
+}
+.info{
+    width: 103px;
+}
+.info p {
+    margin: 0;
+    font-family: "OpenSans-Regular";
+    font-size: 11px;
+    color: var(--color-2);
+}
+.info h2 {
+    margin: 0;
+    font-family: "OpenSans-Regular";
+    font-size: 14px;
+    color: var(--color-2);
+}
+.kil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    position: relative;
+    top: 20px
+}
+.kil img{
+    width: 10px;
+}
+.down{
+    font-family: "OpenSans-Medium";
+    font-size: 10px;
+    color: var(--color-2);
+}
+.forecast {
+    padding: 10px;
+    margin-top: 16px;
+    border-radius: 18px;
+    padding: 16px;
+    background: var(--color-4);
+}
+.clock{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    img{
+        width: 28px;
+        height: 28px;
+    }
+    h3 {
+       margin: 0 0 10px;
+       font-family: "OpenSans-Regular";
+       font-size: 14px;
+       color: var(--color-2);
+   }
+}
+.forecast-cards {
+    display: flex;
+    justify-content: space-between;
+}
+.hour-card {
+    text-align: center;
+    font-size: 14px;
+}
+
+/************** tablas ******************/
+
+.temperature{
+    background: var(--color-4);
+    width: 500px;
+    height: 300px;
+    margin: auto;
+    border-radius: 20px;
+    padding: 20px;
+}
+.title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    h3{
+        font-family: "OpenSans-Regular";
+        font-size: 14px;
+    }
+    img{
+        width: 28px;
+        height: 28px;
+    }
+}
+canvas {
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
 }

@@ -7,6 +7,7 @@
     --color-2: #1E1B1B;
     --color-3: #494649;
     --progress-bar-1: #8A20D5;
+    --color-4: hsla(258, 100%, 87%, 0.300);
 }
 @font-face {
     font-family: "OpenSans_Condensed-Bold";
