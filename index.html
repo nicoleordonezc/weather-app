@@ -1,13 +1,230 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="sp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer type="module"></script>
+    <title>Google Weather App Redesign</title>
+    <link rel="shortcut icon" href="./storage/img/logo.png" type="image/png">
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="module" defer src="js/main.js"></script>
 </head>
 <body>
-    
+   <header>
+        <nav id="navbar">
+           <form  class="form__search" action="current.json" method="get" id="search">
+                <div class="div__icon">
+                    <input type="text" name="location">
+                    <img src="storage/img/search_white.png">
+                </div>
+           </form>
+            <div class="div__body">
+                <div class="div__title">
+                    <h1 id="temp_c">3º</h1>
+                    <span id="feelslike_c">Feels like</span>
+                </div>
+                <div class="div__image">
+                    <img id="icon" src="storage/img/cloud_and_sun_1.png" >
+                    <span id="status">Cloudy</span>
+                </div>
+            </div>
+            <div id="div__footer" class="div__footer">
+                <span id="last_updated">January 18, 16:14</span>
+                <p><strong id="maxtemp_c">Day 0º</strong><strong id="mintemp_c">Night 0º</strong></p>
+            </div>
+            <form class="form__submit" action="?" method="get">
+                <input type="submit" class="active" value="Today">
+                <input type="submit" value="Tomorrow">
+                <input type="submit" value="10 days">
+            </form>
+        </nav>
+   </header>
+   <div class="weather-container">
+    <div class="weather-cards">
+        <div class="card">
+            <img src="storage/img/Group 14.svg" alt="">
+            <div class="info">
+                <p>Wind speed</p>
+                <h2>12 km/h </h2>
+            </div>
+            <div class="kil">
+                <img src="storage/img/arrow_drop_down.svg" alt="">
+                <span class="down">2 km/h</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="storage/img/rainy.png" alt="">
+            <div class="info">
+                <p>Rain chance</p>
+                <h2>24%</h2>
+            </div>
+            <div class="kil">
+                <img src="storage/img/arrow_drop_down (1).svg" alt="">
+                <span class="down">10%</span>
+            </div>
+        </div>
+    </div>
+    <div class="weather-cards">
+        <div class="card">
+            <img src="storage/img/waves.png" alt="">
+            <div class="info">
+                <p>Preassure</p>
+                <h2>720 hpa </h2>
+            </div>
+            <div class="kil">
+                <img src="storage/img/arrow_drop_down (1).svg" alt="">
+                <span class="down">32 hpa</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="storage/img/rainy.png" alt="">
+            <div class="info">
+                <p>UV Index</p>
+                <h2>2,3</h2>
+            </div>
+            <div class="kil">
+                <img src="storage/img/arrow_drop_down.svg" alt="">
+                <span class="down">0.3</span>
+            </div>
+        </div>
+    </div>
+    <div class="forecast">
+        <div class="clock">
+            <img src="storage/img/history_toggle_off.png" alt="">
+            <h3>Hourly forecast</h3>
+        </div>
+        <div class="forecast-cards">
+            <div class="hour-card"><span>Now</span><br><span>☀️</span><br><span>10°</span></div>
+            <div class="hour-card"><span>10AM</span><br><span>☁️</span><br><span>8°</span></div>
+            <div class="hour-card"><span>11AM</span><br><span>☁️</span><br><span>5°</span></div>
+            <div class="hour-card"><span>12PM</span><br><span>☀️</span><br><span>12°</span></div>
+            <div class="hour-card"><span>1PM</span><br><span>☀️</span><br><span>9°</span></div>
+            <div class="hour-card"><span>2PM</span><br><span>☁️</span><br><span>12°</span></div>
+        </div>
+    </div>
+    </div>
+    <div class="temperature">
+        <div class="title">
+            <img src="../storage/img/calendar_month.png" alt="">
+            <h3>Day forecast</h3>
+        </div>
+        <canvas id="tempChart"></canvas>
+    </div>
+    <div class="container">
+        <!-- Sección de Probabilidad de Lluvia -->
+        <div class="section">
+            <div class="title">
+                <img src="storage/img/rainy.png" alt="rain"> Chance of rain
+            </div>
+            <div class="rain-forecast">
+                <div class="rain-row">
+                    <span>7 PM</span>
+                    <div class="rain-bar"><div style="width: 27%;"></div></div>
+                    <span>27%</span>
+                </div>
+                <div class="rain-row">
+                    <span>8 PM</span>
+                    <div class="rain-bar"><div style="width: 44%;"></div></div>
+                    <span>44%</span>
+                </div>
+                <div class="rain-row">
+                    <span>9 PM</span>
+                    <div class="rain-bar"><div style="width: 56%;"></div></div>
+                    <span>56%</span>
+                </div>
+                <div class="rain-row">
+                    <span>10 PM</span>
+                    <div class="rain-bar"><div style="width: 88%;"></div></div>
+                    <span>88%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Amanecer / Atardecer -->
+        <div class="sun-info">
+            <div class="sun-card">
+                <img src="storage/img/nights_stay.png" alt="sunrise">
+                <div class="time">
+                    <h3>Sunrise</h3>
+                    <span>4:20 AM</sapn>
+                </div>
+                <div class="subtext">4h ago</div>
+            </div>
+            <div class="sun-card">
+                <img src="storage/img/bounding_box.png" alt="sunrise">
+                <div class="time">
+                    <h3>Sunset</h3>
+                    <span>4:50 PM</sapn>
+                </div>
+                <div class="subtext">in 9h</div>
+            </div>
+        </div>
+    </div>
+    <div class="climate-box">
+        <div class="forecast-item">
+            <div class="day-details">
+                <div class="date-label">Today</div>
+                <div class="weather-type">Cloudy and Sunny</div>
+            </div>
+            <div class="temperature-data">
+                <span>3°</span> | <span>-2°</span>
+                <div class="weather-symbol sunlight">☀️</div>
+            </div>
+        </div>
+
+        <div class="forecast-item">
+            <div class="day-details">
+                <div class="date-label">Thursday, Jan 19</div>
+                <div class="weather-type">Cloudy</div>
+            </div>
+            <div class="temperature-data">
+                <span>3°</span> | <span>-2°</span>
+                <div class="weather-symbol overcast">☁️</div>
+            </div>
+        </div>
+
+        <div class="forecast-item">
+            <div class="day-details">
+                <div class="date-label">Thursday, Jan 20</div>
+                <div class="weather-type">Cloudy</div>
+            </div>
+            <div class="temperature-data">
+                <span>3°</span> | <span>-2°</span>
+                <div class="weather-symbol overcast">☁️</div>
+            </div>
+        </div>
+
+        <div class="forecast-item">
+            <div class="day-details">
+                <div class="date-label">Thursday, Jan 21</div>
+                <div class="weather-type">Cloudy and Sunny</div>
+            </div>
+            <div class="temperature-data">
+                <span>3°</span> | <span>-2°</span>
+                <div class="weather-symbol sunlight">☀️</div>
+            </div>
+        </div>
+
+        <div class="forecast-item">
+            <div class="day-details">
+                <div class="date-label">Thursday, Jan 22</div>
+                <div class="weather-type">Cloudy</div>
+            </div>
+            <div class="temperature-data">
+                <span>3°</span> | <span>-2°</span>
+                <div class="weather-symbol overcast">☁️</div>
+            </div>
+        </div>
+
+        <div class="forecast-item">
+            <div class="day-details">
+                <div class="date-label">Thursday, Jan 23</div>
+                <div class="weather-type">Cloudy and Sunny</div>
+            </div>
+            <div class="temperature-data">
+                <span>3°</span> | <span>-2°</span>
+                <div class="weather-symbol sunlight">☀️</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
